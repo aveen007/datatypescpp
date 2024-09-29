@@ -5,6 +5,7 @@
 #include <set>
 #include <functional>
 #include <fstream>
+#include "BaseObject.h"
 
 #include "TypeFactory.h"
 using namespace std;
@@ -32,7 +33,18 @@ int main(void) {
 //	cout << __cplusplus;
 	cout << type1 << ' ' << type2 << endl;
 	TypeFactory factory;
-	factory.Create(type1);
+	//factory.Create(type1);
+
+	try {
+		auto object = factory.Create(type1);
+		
+		object->initialize();  // Initialize the object
+		object->print();       // Print the initialized value
+	}
+	catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+
 	ofstream fout("func_1.cpp");
 	fout << "#include <iostream>" << endl;
 	fout << "int f(void) {" << endl;

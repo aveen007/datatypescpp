@@ -26,18 +26,18 @@ public:
         subtype2type["void"] = { "void" };
         subtype2type["Nuller"] = { "decltype(nullptr)" };
         ///matching the types to objects
-        type2object["char"] = []() { return std::make_any<char>(' '); };
-        type2object["Sinteger"] = []() { return std::make_any<int>(0); };
-        type2object["Uinteger"] = []() { return std::make_any<int>(0); };
-        type2object["float"] = []() { return std::make_any<float>(0.0); };
-        type2object["boolean"] = []() { return std::make_any<int>(0); };
+        type2object["char"] = []() { return std::make_unique<CharObject>(); };
+        type2object["Sinteger"] = []() { return std::make_unique<SIntObject>(); };
+        type2object["Uinteger"] = []() { return std::make_unique<UIntObject>(); };
+        type2object["float"] = []() { return std::make_unique<FloatObject>(); };
+        type2object["boolean"] = []() { return std::make_unique<BooleanObject>(); };
       // type2object["void"] = []() {return make_any<void>(0.0); };
     //    type2object["Nuller"] = []() { return std::make_any<decltype(nullptr)>(0); };
 
 
     };
 
-    any Create(string subtype) {
+    unique_ptr<BaseObject> Create(string subtype) {
         try {
             string type;
            // cout << endl;
@@ -55,7 +55,8 @@ public:
             }
             auto it = type2object.find(type);
             if (it != type2object.end()) {
-                return it->second();
+                
+              return  it->second();
 
             }
             else {
@@ -74,7 +75,7 @@ protected:
 private:
     unordered_map <string, set<string>> subtype2type;
 
-    unordered_map<string, function<std::any()>> type2object; // Use function to store lambdas
+    unordered_map<string, function<unique_ptr<BaseObject>() >> type2object; // Use function to store lambdas
 
 
 };
