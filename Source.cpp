@@ -5,11 +5,18 @@
 #include <set>
 #include <functional>
 #include <fstream>
+
+
 #include "BaseObject.h"
 
 #include "TypeFactory.h"
+
+
 using namespace std;
 string type1 = "", type2 = "";
+
+
+
 void input() {
 
 	cout << "Enter first type: ";
@@ -25,14 +32,17 @@ void input() {
 	}
 	return;
 }
-void output(string type1, string type2, string value1, string value2) {
+void output(string type1, string type2, string value1, string value2, vector<string> operations) {
 
 	ofstream fout("func_1.cpp");
 	fout << "#include <iostream>" << endl;
 	fout << "int f(void) {" << endl;
 	fout << type1 << " var1 = "<< value1<<";" << endl;
 	fout << type1 << " var2 ="<<value2<<"; " << endl;
-	fout << "std::cout << var1 + var2 << std::endl;" << endl;
+	for (string op: operations) {
+
+	fout << "std::cout << var1"<<op<<" var2 << std::endl; " << endl;
+	}
 	fout << "return 0;" << endl;
 	fout << "}" << endl;
 	fout.close();
@@ -42,11 +52,12 @@ int main(void) {
 
 
 	input();// inputting the types
-
+	
 //	cout << __cplusplus;
 	cout << type1 << ' ' << type2 << endl;
+
 	TypeFactory factory;
-	//factory.Create(type1);
+	vector< string> validOperations=factory.subtype2operation(type1, type2);
 
 	try {
 		auto object1 = factory.Create(type1);
@@ -58,7 +69,7 @@ int main(void) {
 
 		object2->initialize();  // Initialize the object
 		string value2 = object2->print();       // Print the initialized value
-		output(type1, type2, value1, value2);
+		output(type1, type2, value1, value2, validOperations);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
