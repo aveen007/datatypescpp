@@ -25,6 +25,19 @@ void input() {
 	}
 	return;
 }
+void output(string type1, string type2, string value1, string value2) {
+
+	ofstream fout("func_1.cpp");
+	fout << "#include <iostream>" << endl;
+	fout << "int f(void) {" << endl;
+	fout << type1 << " var1 = "<< value1<<";" << endl;
+	fout << type1 << " var2 ="<<value2<<"; " << endl;
+	fout << "std::cout << var1 + var2 << std::endl;" << endl;
+	fout << "return 0;" << endl;
+	fout << "}" << endl;
+	fout.close();
+
+}
 int main(void) {
 
 
@@ -36,23 +49,21 @@ int main(void) {
 	//factory.Create(type1);
 
 	try {
-		auto object = factory.Create(type1);
+		auto object1 = factory.Create(type1);
+		auto object2 = factory.Create(type2);
 		
-		object->initialize();  // Initialize the object
-		object->print();       // Print the initialized value
+		object1->initialize();  // Initialize the object
+		string value1= object1->print();       // Print the initialized value
+
+
+		object2->initialize();  // Initialize the object
+		string value2 = object2->print();       // Print the initialized value
+		output(type1, type2, value1, value2);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
-	ofstream fout("func_1.cpp");
-	fout << "#include <iostream>" << endl;
-	fout << "int f(void) {" << endl;
-	fout << type1 << " var1 = 1;" << endl;
-	fout << type1 << " var2 {3};" << endl;
-	fout << "std::cout << var1 + var2 << std::endl;" << endl;
-	fout << "return 0;" << endl;
-	fout << "}" << endl;
-	fout.close();
+	
 	return 0;
 }
