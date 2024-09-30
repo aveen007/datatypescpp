@@ -29,8 +29,8 @@ public:
 
         ///matching the subtypes to types
         subtype2type["char"] = { "char", "char16_t", "char32_t", "wchar_t" };
-        subtype2type["Sinteger"] = { "signed int", "signed short int", "signed char", "singed long int", "signed long long int", "int"};
-        subtype2type["Uinteger"] = { "unsigned char", "unsigned short int", "unsigned int", "unsigned long int", "unsigned long long int" };
+        subtype2type["Sinteger"] = { "signed int", "signed short int", "signed char", "singed long int", "signed long long int", "int","short","short int","signed short","long","long int", "signed long", "signed long long", "long long int"};
+        subtype2type["Uinteger"] = { "unsigned char", "unsigned short int", "unsigned int", "unsigned long int", "unsigned long long int","unsigned short", "unsigned", "unsigned long", "unsigned long long"};
         subtype2type["float"] = { "float", "double", "long double" };
         subtype2type["boolean"] = { "bool" };
         subtype2type["void"] = { "void" };

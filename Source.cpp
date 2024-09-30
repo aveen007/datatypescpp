@@ -5,6 +5,7 @@
 #include <set>
 #include <functional>
 #include <fstream>
+#include <algorithm>
 
 
 #include "BaseObject.h"
@@ -16,6 +17,20 @@ using namespace std;
 string type1 = "", type2 = "";
 
 
+string trim(const string& str) {
+	// Find the first character that is not a whitespace character
+	size_t start = str.find_first_not_of(' ');
+	// Find the last character that is not a whitespace character
+	size_t end = str.find_last_not_of(' ');
+
+	// If the string is all whitespace, return an empty string
+	if (start == string::npos) {
+		return "";
+	}
+
+	// Return the substring that excludes leading and trailing spaces
+	return str.substr(start, end - start + 1);
+}
 
 void input() {
 
@@ -24,12 +39,13 @@ void input() {
 
 		getline(cin, type1);
 	}
-
+	type1 = trim(type1);
 	cout << "Enter second type : ";
 	while (type2 == "") {
 
 		getline(cin, type2);
 	}
+	type2 = trim(type2);
 	return;
 }
 void output(string type1, string type2, string value1, string value2, vector<string> operations) {
