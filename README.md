@@ -38,7 +38,7 @@
 
 Вот как обрабатываются операции для типов `char`:
 
-![Пример с Char](path/to/your/image2.png)
+![Пример с Char]
 ![image](https://github.com/user-attachments/assets/fe315892-3e69-43da-aa34-f4015b52e075)
 ![image](https://github.com/user-attachments/assets/c582f413-74fb-4671-bd4a-e2b63e7a5c72)
 
