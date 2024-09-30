@@ -27,7 +27,7 @@
 ### Пример с `unsigned int` и `int`
 
 Вот пример кода, демонстрирующий, как обрабатываются операции над `unsigned int` и `int`:
-![Пример с Unsigned Int и Int]
+
 ![image](https://github.com/user-attachments/assets/c61551fe-4d4b-4d3f-b433-e04ce980929d)
 ![image](https://github.com/user-attachments/assets/e0c7c452-e3a0-48e7-8927-87ff98e8bb9b)
 
@@ -38,7 +38,7 @@
 
 Вот как обрабатываются операции для типов `char`:
 
-![Пример с Char]
+
 ![image](https://github.com/user-attachments/assets/fe315892-3e69-43da-aa34-f4015b52e075)
 ![image](https://github.com/user-attachments/assets/c582f413-74fb-4671-bd4a-e2b63e7a5c72)
 
